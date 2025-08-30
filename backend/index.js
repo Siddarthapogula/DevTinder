@@ -9,7 +9,7 @@ const requestRouter = require('./routes/request');
 const profileRouter = require('./routes/profile')
 const authRouter = require('./routes/auth');
 app.use(cors({
-    origin : 'http://localhost:5173',
+    origin : process.env.PROD_URL,
     credentials : true
 }));
 app.use(express.json());
