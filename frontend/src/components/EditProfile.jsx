@@ -4,7 +4,6 @@ import { BASEURL } from "../utils/constants";
 import axios from "axios";
 import { addUser } from "../utils/userSlice";
 import UserCard from "./UserCard";
-import { set } from "mongoose";
 
 const EditProfile = () => {
   const user = useSelector((store) => store.user);

@@ -6,5 +6,10 @@ export default defineConfig({
   plugins: [react(),
     tailwindcss()
   ],
-  envDir : '.'
+  envDir : '.',
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    sourcemap: true,
+  },
 })
