@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = process.env.PORT;
 const connectDb = require('./config/database');
 const cookieParser = require('cookie-parser')
 const cors = require('cors')
@@ -9,7 +9,7 @@ const requestRouter = require('./routes/request');
 const profileRouter = require('./routes/profile')
 const authRouter = require('./routes/auth');
 app.use(cors({
-    origin : process.env.PROD_URL,
+    origin : 'https://devtinder-7ade.onrender.com',
     credentials : true
 }));
 app.use(express.json());
