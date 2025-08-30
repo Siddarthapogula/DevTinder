@@ -1,7 +1,7 @@
 require("dotenv").config();
 const mongoose = require('mongoose')
 const jwt = require('jsonwebtoken')
-const jwt_secret = process.env.jwt_secret;
+const jwt_secret = process.env.JWT_SECRET;
 
 const userSchema = new mongoose.Schema({
     firstName : {
