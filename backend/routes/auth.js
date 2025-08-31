@@ -50,7 +50,12 @@ authRouter.post("/login", async (req, res) => {
     return res.status(401).json(sendCustomErrorResponse("incorrect password"));
   }
   const token = await user.getJWT();
-  res.cookie("token", token, { expires: new Date(Date.now() + 1 * 3600000), sameSite : 'none', domain: '.onrender.com' });
+  res.cookie("token", token, {
+    expires: new Date(Date.now() + 1 * 3600000), // You can use maxAge instead for better practice
+    sameSite: "None",
+    domain: ".onrender.com",
+    secure: true, // <-- Add this line
+  });
   return res.status(200).json(sendSuccessBodyResponse(user));
 });
 
