@@ -2,7 +2,7 @@ require("dotenv").config();
 const jwt = require('jsonwebtoken')
 const User = require('../models/user');
 const { sendCustomErrorResponse, sendServerErrorResponse } = require('../utils/helper');
-const jwt_secret = process.env.jwt_secret;
+const jwt_secret = process.env.JWT_SECRET;
 
 
 const userAuth =  async (req, res, next)=>{
