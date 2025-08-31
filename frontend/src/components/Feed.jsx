@@ -4,9 +4,11 @@ import { BASEURL } from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
 import UserCard from "./UserCard";
 import { addFeed } from "../utils/feedSlice";
+import { useState } from "react";
 
 const Feed = () => {
   const feed = useSelector((store) => store.feed);
+  const [error, setError] = useState(null);
   const dispatch = useDispatch();
   const getFeed = async () => {
     try {
