@@ -27,4 +27,4 @@ connectDb().then((data)=>{
   })
   .catch(function (e) {
     console.log("some thing went wrong", e.message);
-  });
+  })
