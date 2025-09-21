@@ -21,7 +21,7 @@ app.use('/', profileRouter);
 app.use('/', authRouter);
 
 connectDb().then((data)=>{
-    console.log('Database succcessfully connected');
+    console.log('Changed-Database succcessfully connected');
     app.listen(port);
 }).catch((err)=>{
     console.log('failed to start server or connect to the database');
