@@ -22,11 +22,6 @@ app.use("/", requestRouter);
 app.use("/", profileRouter);
 app.use("/", authRouter);
 
-connectDb()
-  .then((data) => {
-    console.log("Database succcessfully connected");
-    app.listen(port);
-  })
-  .catch(function (e) {
-    console.log("some thing went wrong", e.message);
-  });
+connectDb().then((data) => {
+  console.log("Changed-Database succcessfully connected");
+});
