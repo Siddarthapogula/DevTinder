@@ -41,5 +41,5 @@ connectDb()
     });
   })
   .catch((e) => {
-    console.log('error occured', e.message);
+    console.log('error occured fixed', e.message);
   });
