@@ -37,13 +37,13 @@ jobs:
         working-directory: frontend
         run : npm run lint
       
-      # - name : build backend docker image
-      #   working-directory: backend
-      #   run : docker build -t devtinder-backend .
+      - name : build backend docker image
+        working-directory: backend
+        run : docker build -t devtinder-backend .
 
-      # - name : build frontend docker image 
-      #   working-directory:  frontend
-      #   run : docker build -t devtinder-frontend .
+      - name : build frontend docker image 
+        working-directory:  frontend
+        run : docker build -t devtinder-frontend .
 
-      - name : build frontend's and backend's docker image
-        run : docker compose up -d --build  
+      # - name : build frontend's and backend's docker image
+      #   run : docker compose up -d --build  
