@@ -29,9 +29,9 @@ app.get('/getDetails', async (req, res) => {
 });
 
 app.use('/', userRouter);
-app.use('/', requestRouter)
+app.use('/', requestRouter);
 app.use('/', profileRouter);
-app.use('/', authRouter)
+app.use('/', authRouter);
 
 connectDb()
   .then((data) => {
@@ -42,4 +42,4 @@ connectDb()
   })
   .catch((e) => {
     console.log('error occured', e.message);
-  })
+  });
