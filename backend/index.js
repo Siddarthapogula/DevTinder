@@ -42,4 +42,4 @@ connectDb()
   })
   .catch((e) => {
     console.log('error occured', e.message);
-  })
+  });
