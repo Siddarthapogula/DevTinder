@@ -1,28 +1,20 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { BASEURL } from "../utils/constants";
-import axios from "axios";
-import { addUser } from "../utils/userSlice";
-import UserCard from "./UserCard";
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { BASEURL } from '../utils/constants';
+import axios from 'axios';
+import { addUser } from '../utils/userSlice';
+import UserCard from './UserCard';
 
 const EditProfile = () => {
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
-  if (!user) {
-    return (
-      <div className=" flex  justify-center screen-h">
-        {" "}
-        <span className="loading loading-spinner loading-xl"></span>
-      </div>
-    );
-  }
   const { _id } = user;
-  const [firstName, setFirstName] = useState(user?.firstName || "");
-  const [lastName, setLastName] = useState(user?.lastName || "");
-  const [age, setAge] = useState(user?.age || "");
-  const [photoUrl, setPhotoUrl] = useState(user?.photoUrl || "");
-  const [about, setAbout] = useState(user?.about || "");
-  const [gender, setGender] = useState(user?.gender || "");
+  const [firstName, setFirstName] = useState(user?.firstName || '');
+  const [lastName, setLastName] = useState(user?.lastName || '');
+  const [age, setAge] = useState(user?.age || '');
+  const [photoUrl, setPhotoUrl] = useState(user?.photoUrl || '');
+  const [about, setAbout] = useState(user?.about || '');
+  const [gender, setGender] = useState(user?.gender || '');
   const [error, setError] = useState(null);
   const [toast, setToast] = useState(false);
   const handleEditClick = async () => {
@@ -37,7 +29,7 @@ const EditProfile = () => {
           photoUrl,
           about,
         },
-        { withCredentials: true }
+        { withCredentials: true },
       );
       dispatch(addUser(data.data));
       setToast(true);
@@ -51,6 +43,13 @@ const EditProfile = () => {
       }, 2000);
     }
   };
+  if (!user) {
+    return (
+      <div className=" flex  justify-center screen-h">
+        <span className="loading loading-spinner loading-xl"></span>
+      </div>
+    );
+  }
   return (
     <div className=" flex flex-col items-center">
       {error && (

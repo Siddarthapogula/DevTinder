@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import { addUser, removeUser } from "../utils/userSlice";
-import {removeFeed} from '../utils/feedSlice'
-import axios from "axios";
-import { BASEURL } from "../utils/constants";
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { addUser, removeUser } from '../utils/userSlice';
+import { removeFeed } from '../utils/feedSlice';
+import axios from 'axios';
+import { BASEURL } from '../utils/constants';
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -12,19 +12,19 @@ const Navbar = () => {
   const user = useSelector((store) => store.user);
   const fetchUser = async () => {
     try {
-      const { data } = await axios.get(BASEURL + "/profile/view", {
+      const { data } = await axios.get(BASEURL + '/profile/view', {
         withCredentials: true,
       });
       dispatch(addUser(data.data));
-      navigate("/");
+      navigate('/');
     } catch (e) {
-      navigate("/login");
+      navigate('/login');
     }
   };
   useEffect(() => {
     fetchUser();
-    if (window.location.pathname == "/" && !user) {
-      navigate("/login");
+    if (window.location.pathname == '/' && !user) {
+      navigate('/login');
     }
   }, []);
 
@@ -32,13 +32,15 @@ const Navbar = () => {
     try {
       await axios.post(`${BASEURL}/logout`, {}, { withCredentials: true });
       dispatch(removeUser());
-      dispatch(removeFeed())
-      navigate("/login");
-    } catch (e) {}
+      dispatch(removeFeed());
+      navigate('/login');
+    } catch (e) {
+      console.log(e);
+    }
   };
   return (
     <div className="navbar bg-base-300 shadow-sm">
-      <div className="flex-1" onClick={() => navigate("/")}>
+      <div className="flex-1" onClick={() => navigate('/')}>
         <a className="btn btn-ghost text-xl">DevTinder</a>
       </div>
       {user ? (
@@ -95,9 +97,9 @@ const Navbar = () => {
           tabIndex={0}
           role="button"
           className="btn btn-ghost"
-          onClick={() => navigate("/login")}
+          onClick={() => navigate('/login')}
         >
-          {" "}
+          {' '}
           Login
         </div>
       )}

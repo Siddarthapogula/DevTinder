@@ -1,6 +1,6 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { BASEURL } from "../utils/constants";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { BASEURL } from '../utils/constants';
 
 const RequestComponent = ({ user, reqId }) => {
   const [status, setStatus] = useState(null);
@@ -11,9 +11,9 @@ const RequestComponent = ({ user, reqId }) => {
       const { data } = await axios.post(
         BASEURL + `/request/review/accepted/${reqId}`,
         {},
-        { withCredentials: true }
+        { withCredentials: true },
       );
-      setStatus("accepted");
+      setStatus('accepted');
     } catch (e) {
       setError(e.response.data.message);
       setTimeout(() => {
@@ -26,9 +26,9 @@ const RequestComponent = ({ user, reqId }) => {
       const { data } = await axios.post(
         BASEURL + `/request/review/rejected/${reqId}`,
         {},
-        { withCredentials: true }
+        { withCredentials: true },
       );
-      setStatus("rejected");
+      setStatus('rejected');
       console.log(data);
     } catch (e) {
       setError(e.response.data.message);
@@ -48,7 +48,7 @@ const RequestComponent = ({ user, reqId }) => {
           <img alt="Profile" src={user.photoUrl} className="w-8 rounded-full" />
         </div>
         <h1 className="card-title text-lg">
-          {user.firstName + " " + user.lastName}
+          {user.firstName + ' ' + user.lastName}
         </h1>
 
         <div className="flex flex-row justify-center gap-3">
@@ -93,7 +93,7 @@ const Requests = () => {
   const [error, setError] = useState(null);
   const fetchRequests = async () => {
     try {
-      const { data } = await axios.get(BASEURL + "/requests/received", {
+      const { data } = await axios.get(BASEURL + '/requests/received', {
         withCredentials: true,
       });
       setRequests(data?.data);
@@ -111,7 +111,7 @@ const Requests = () => {
         <div className="w-full max-w-4xl">
           {/* Heading */}
           <h1 className="text-2xl font-bold mb-6 text-center">
-            requests{" "}
+            requests{' '}
             <span className="text-base text-base-content/70">
               ({requests.length})
             </span>

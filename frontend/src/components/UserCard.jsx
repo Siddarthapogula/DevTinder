@@ -1,7 +1,7 @@
-import axios from "axios";
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import { BASEURL } from "../utils/constants";
+import axios from 'axios';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { BASEURL } from '../utils/constants';
 
 const UserCard = ({ user, preview, previewOnly }) => {
   const loggedUser = useSelector((store) => store.user);
@@ -14,9 +14,9 @@ const UserCard = ({ user, preview, previewOnly }) => {
       const { data } = await axios.post(
         BASEURL + `/request/send/interested/${toUserId}`,
         {},
-        { withCredentials: true }
+        { withCredentials: true },
       );
-      setSend("Interested");
+      setSend('Interested');
     } catch (e) {
       setError(e.response.data.message);
       setTimeout(() => {
@@ -31,9 +31,9 @@ const UserCard = ({ user, preview, previewOnly }) => {
       const { data } = await axios.post(
         BASEURL + `/request/send/ignored/${toUserId}`,
         {},
-        { withCredentials: true }
+        { withCredentials: true },
       );
-      setSend("Ignored");
+      setSend('Ignored');
     } catch (e) {
       setError(e.response.data.message);
       setTimeout(() => {
@@ -51,8 +51,8 @@ const UserCard = ({ user, preview, previewOnly }) => {
         />
       </figure>
       <div className="card-body flex gap-2">
-        <h2 className="card-title">{user.firstName + " " + user.lastName}</h2>
-        <span>{user.age + " " + user.gender}</span>
+        <h2 className="card-title">{user.firstName + ' ' + user.lastName}</h2>
+        <span>{user.age + ' ' + user.gender}</span>
         {user.skills.length > 0 && (
           <div>
             <h3 className="font-medium">Skills:</h3>
@@ -72,16 +72,12 @@ const UserCard = ({ user, preview, previewOnly }) => {
               Interested
             </button>
           )}
-          {!send  && !previewOnly && !preview && (
+          {!send && !previewOnly && !preview && (
             <button onClick={handleIgnoredlick} className="btn btn-primary">
               Ignore
             </button>
           )}
-          {send && (
-            <button className="btn btn-primary">
-              {send}
-            </button>
-          )}
+          {send && <button className="btn btn-primary">{send}</button>}
         </div>
       </div>
     </div>

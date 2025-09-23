@@ -1,12 +1,12 @@
-import { useState } from "react";
-import { BASEURL } from "../utils/constants";
-import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { addUser } from "../utils/userSlice";
+import { useState } from 'react';
+import { BASEURL } from '../utils/constants';
+import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { addUser } from '../utils/userSlice';
 const Login = () => {
-  const [emailId, setEmailId] = useState("@gmail.com");
-  const [password, setPassword] = useState("12345678");
+  const [emailId, setEmailId] = useState('@gmail.com');
+  const [password, setPassword] = useState('12345678');
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -18,10 +18,10 @@ const Login = () => {
           emailId,
           password,
         },
-        { withCredentials: true }
+        { withCredentials: true },
       );
       dispatch(addUser(data.data));
-      navigate("/");
+      navigate('/');
       return;
     } catch (e) {
       setError(e.response.data.message);

@@ -1,12 +1,15 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { BASEURL } from "../utils/constants";
-import { useNavigate } from "react-router-dom";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { BASEURL } from '../utils/constants';
+import { useNavigate } from 'react-router-dom';
 
 const ConnectionComponent = ({ user }) => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
-    <div onClick={()=>navigate(`/profile/view/${user._id}`)}  className="card w-full max-w-sm bg-base-100 shadow-sm border  rounded-lg hover:shadow-md transition ">
+    <div
+      onClick={() => navigate(`/profile/view/${user._id}`)}
+      className="card w-full max-w-sm bg-base-100 shadow-sm border  rounded-lg hover:shadow-md transition "
+    >
       <div className="card-body flex flex-row items-center cursor-pointer gap-4 p-3">
         <div className="avatar">
           <div className="w-12 rounded-full">
@@ -17,18 +20,17 @@ const ConnectionComponent = ({ user }) => {
           <h1 className="font-semibold text-sm truncate">
             {user.firstName} {user.lastName}
           </h1>
-          <p className="text-xs text-base-content/70 truncate">
-            {user.about}
-          </p>
+          <p className="text-xs text-base-content/70 truncate">{user.about}</p>
           <div className="flex flex-wrap gap-1 mt-1">
-            {user.skills && user.skills.slice(0, 2).map((skill, idx) => (
-              <span
-                key={idx}
-                className="badge badge-outline badge-xs text-[10px]"
-              >
-                {skill}
-              </span>
-            ))}
+            {user.skills &&
+              user.skills.slice(0, 2).map((skill, idx) => (
+                <span
+                  key={idx}
+                  className="badge badge-outline badge-xs text-[10px]"
+                >
+                  {skill}
+                </span>
+              ))}
           </div>
         </div>
         <div className="dropdown dropdown-end">
@@ -36,15 +38,18 @@ const ConnectionComponent = ({ user }) => {
             ⋮
           </div>
           <ul className="menu menu-md dropdown-content bg-base-100 shadow rounded-box w-28">
-            <li><a>Message</a></li>
-            <li><a>Remove</a></li>
+            <li>
+              <a>Message</a>
+            </li>
+            <li>
+              <a>Remove</a>
+            </li>
           </ul>
         </div>
       </div>
     </div>
   );
 };
-
 
 const Connections = () => {
   const [connections, setConnections] = useState(null);
@@ -53,7 +58,7 @@ const Connections = () => {
 
   const fetchConnections = async () => {
     try {
-      const { data } = await axios.get(BASEURL + "/user/connections", {
+      const { data } = await axios.get(BASEURL + '/user/connections', {
         withCredentials: true,
       });
       setConnections(data.data);
@@ -73,7 +78,7 @@ const Connections = () => {
         <div className="w-full max-w-4xl">
           {/* Heading */}
           <h1 className="text-2xl font-bold mb-6 text-center">
-            Connections{" "}
+            Connections{' '}
             <span className="text-base text-base-content/70">
               ({connections.length})
             </span>

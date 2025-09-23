@@ -7,12 +7,12 @@
   border-top-left-radius: 1rem;
   margin: 0.5rem;
 }
-@import "tailwindcss";
+@import 'tailwindcss';
 @plugin "daisyui" {
   themes: light --default;
-  root: ":root";
-  include: ;
-  exclude: ;
-  prefix: ;
+  root: ':root';
+  include:;
+  exclude:;
+  prefix:;
   logs: true;
 }
