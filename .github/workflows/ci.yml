@@ -46,4 +46,4 @@ jobs:
       #   run : docker build -t devtinder-frontend .
 
       - name : build frontend's and backend's docker image
-        run : docker-compose up
+        run : docker compose up -d --build  
