@@ -12,7 +12,7 @@ const authRouter = require('./routes/auth');
 app.use(
   cors({
     // origin: "https://devtinder-7ade.onrender.com",
-    origin: 'http://localhost:4173',
+    origin: process.env.PROD_URL,
     credentials: true,
   }),
 );
@@ -41,5 +41,5 @@ connectDb()
     });
   })
   .catch((e) => {
-    console.log('error occured', e.message);
-  })
+    console.log('error occured fixed', e.message);
+  });
