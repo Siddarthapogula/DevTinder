@@ -9,7 +9,10 @@ services:
       - "3000:3000"
 
   frontend:
-    build: ./frontend
+    build: 
+      context: ./frontend
+      args:
+        VITE_BASE_URL: http://3.27.149.19:3000
     container_name: devtinder-frontend
     restart: always
     ports:
